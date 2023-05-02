@@ -1,0 +1,107 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+//---------------------------------------------Main memory allocation-------------------------
+typedef struct main_memory{
+    int size;
+    struct main_memory *next;
+}mem;
+// --------------------------------------------Program queue---------------------------------------
+typedef struct programm{
+    int name;
+    int time;
+    int size;
+    struct programm *next;
+}pgm;
+//------------------------------------------------ Bit map ---------------------------------
+typedef struct Bit_map{
+    char stat[2];
+    int st_add;
+    int length;
+    struct Bit_map *next;
+}bm;
+// -------------------------------------------- Variable Global ------------------------------
+    pgm* tete=NULL;
+    bm* bit_tete=NULL;
+    mem* memory=NULL;
+    int unit=0,main_m=0;
+//-----------------------------------calculate number of units of each programm------------------------
+int pgm_units(pgm *T,int un){
+    if(T->size%un==0){
+        return T->size/un;
+        }else{
+        return (T->size/un)+1;
+    }
+}
+//-----------------------------------calculate number of units of main memory--------------------
+int memory_units(int mem,int un){
+    if(mem%un==0){
+        return mem/un;
+        }else{
+        return (mem/un)+1;
+    }
+}
+// -------------------------------------- init memory ------------------------------------------
+void init_memory(){
+}
+// -------------------------------------- init Bit-Map -----------------------------------------
+void init_bit(){
+}
+// -------------------------------------- Get Programm -----------------------------------------
+pgm *get_pgm(pgm * T){
+    pgm *P=NULL;
+    P=T;
+    T=T->next;
+    return P;
+}
+// -------------------------------------- Creation of bit map-----------------------------------
+bm* creation_bm(bm* M,int n){
+    bm* TEMP=NULL,*Q=NULL;
+    TEMP=(bm*)malloc(sizeof(bm));
+    int i=0;
+    while(i<n){
+        TEMP->length=pgm_units(P,unit);
+        TEMP->stat[0]='H';
+        if(M==NULL){
+            M=TEMP;
+            M->st_add=0;
+        }else{
+            Q=M;
+            while(Q!=NULL){
+                Q=Q->next;
+            }
+            Q->next=TEMP;
+        }
+
+    }
+
+}
+// --------------------------------------- Display ----------------------------------------------
+void display(int un,bm* M){
+    while(M!=NULL){
+     for(int i=0;i<un;i++){
+            if(i<=M->length)
+                printf("1");
+            else
+                printf("0");
+        }
+        printf("\n");
+        M=M->next;
+    }
+}
+// ---------------------------------------main programm -------------------------------------------
+int main()
+{
+
+    printf("Enter The size of unit : ");
+    scanf("%d",&unit);
+    printf("Enter The size of Main memory");
+    scanf("%d",&main_m);
+    //memory units
+    int mem_un=memory_units(main_m,unit);
+    // programm units
+    int pgm_un=pgm_units(tete,unit);
+
+
+    return 0;
+}

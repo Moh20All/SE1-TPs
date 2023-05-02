@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1677664148 source:c:\users\moh\desktop\moh\legendary year\s4\se1\pw1\pw1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

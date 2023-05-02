@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1680965160 source:c:\users\all\desktop\moh\s4\se1\tp-se2\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1681291273 source:c:\users\moh\desktop\moh\legendary year\s4\se1\tp-se2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
